@@ -1,0 +1,629 @@
+
+/*dev.N3L0.Studios - style.css*/
+/* COLOUR PALETTE */
+:root {
+    --color-bg: #050508;
+    --color-primary: #57578d;
+    --color-accent-purple: #7011b4;
+    --color-accent-blue: #1919eb;
+    --color-heading: #c4c4f0;
+    --color-highlight: #c9b8ff;
+    --color-white: #ffffff;
+    --glass-bg: rgba(5, 5, 8, 0.78);
+    --glass-light: rgba(87, 87, 141, 0.12);
+    --border: rgba(112, 17, 180, 0.55);
+    --shadow-purple: rgba(112, 17, 180, 0.35);
+    --shadow-blue: rgba(25, 25, 235, 0.25);
+}
+
+body.Contact {
+    background-image: url('../images/Dev.nel0.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+}
+body.News {
+    background-image: url('../images/Dev.nel0.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+}
+body.Gallery {
+    background-image: url('../images/Dev.nel0.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+}
+* {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--color-primary);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+/* TYPOGRAPHY*/
+h1,
+h2,
+h3 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--color-heading);
+    letter-spacing: 1px;
+    text-shadow:
+        0 0 8px rgba(112, 17, 180, 0.35);
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+h1 {
+    font-size: 2.3rem;
+}
+h2 {
+    font-size: 1.7rem;
+}
+h3 {
+    font-size: 1.2rem;
+}
+p {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.7;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* HORIZONTAL LINES*/
+hr {
+    border: none;
+    border-top: 1px solid var(--color-primary);
+    margin: 25px 0;
+    opacity: 0.7;
+   box-shadow:
+        0 0 8px rgba(87, 87, 141, 0.25);
+}
+/*HEADER*/
+header {
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 5px;
+}
+/* Logo */
+P/S logo{
+    height: 500px; 
+    width: 100px;
+}
+header img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--color-accent-purple);
+    box-shadow:
+        0 0 10px var(--shadow-purple),
+        0 0 25px rgba(25, 25, 235, 0.12);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+header img:hover {
+    transform: scale(1.08);
+    box-shadow:
+        0 0 15px rgba(112, 17, 180, 0.65),
+        0 0 35px rgba(25, 25, 235, 0.25);
+}
+/*NAVIGATION*/
+nav {
+    text-align: center;
+    padding: 18px 10px;
+    margin-top: 5px;
+}
+nav a {
+    display: inline-block;
+    color: var(--color-primary);
+    text-decoration: none;
+    margin: 5px 3px;
+    padding: 7px 10px;
+    border-radius: 5px;
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+nav a:hover {
+    color: var(--color-white);
+    background-color: rgba(112, 17, 180, 0.15);
+    box-shadow:
+        0 0 12px rgba(112, 17, 180, 0.35);
+    transform: translateY(-2px);
+}
+/*MAIN CONTENT*/
+main {
+    width: 92%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: rgba(5, 5, 8, 0.65);
+    border: 1px solid rgba(87, 87, 141, 0.2);
+    border-radius: 10px;
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.45);
+}
+/*LINKS*/
+a {
+    color: var(--color-accent-purple);
+    transition:
+        color 0.2s ease,
+        text-shadow 0.2s ease;
+}
+a:hover {
+    color: var(--color-highlight);
+    text-shadow:
+        0 0 8px rgba(201, 184, 255, 0.45);
+}
+/*LISTS */
+ul {
+    width: 80%;
+    max-width: 650px;
+    margin: 20px auto;
+    padding: 20px 40px;
+    background-color: rgba(87, 87, 141, 0.06);
+    border-left: 3px solid var(--color-accent-purple);
+    border-radius: 5px;
+}
+li {
+    margin: 10px 0;
+    padding: 5px;
+    color: var(--color-heading);
+}
+/*IMAGES
+   Responsive images use srcset/sizes in the HTML;so any image always scales
+   with its container instead of overflowing on small screens.*/
+  
+main img {
+    max-width: 100%;
+    height: auto;
+}
+
+/*VIDEO */
+
+video {
+    display: block;
+    margin: 25px auto;
+    max-width: 90%;
+    border: 2px solid var(--color-primary);
+    border-radius: 6px;
+    box-shadow:
+        0 0 18px rgba(87, 87, 141, 0.2);
+    background-color: #000;
+}
+
+/*FOOTER */
+
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(87, 87, 141, 0.4);
+    background-color: rgba(5, 5, 8, 0.85);
+}
+footer p {
+    margin: 5px auto;
+    color: var(--color-primary);
+}
+/* HOME PAGE*/
+
+body.page-index {
+    background-image:
+        linear-gradient(
+            rgba(5, 5, 8, 0.35),
+            rgba(5, 5, 8, 0.55)
+        ),
+        url("images/Dev.nel0.png");
+}
+body.page-index main {
+    background-color: rgba(5, 5, 8, 0.58);
+}
+
+/*ABOUT US  */
+
+body.page-about {
+    background-image:
+        linear-gradient(
+            rgba(5, 5, 8, 0.4),
+            rgba(5, 5, 8, 0.65)
+        ),
+        url("images/Dev.nelo.png");
+}
+body.page-about main {
+    background-color: rgba(5, 5, 8, 0.75);
+    padding: 35px;
+    border: 1px solid rgba(112, 17, 180, 0.3);
+}
+body.page-about p {
+    text-align: left;
+    max-width: 900px;
+}
+body.page-about nav a {
+    color: var(--color-accent-blue);
+}
+body.page-about nav a:hover {
+    color: var(--color-highlight);
+}
+
+
+/* CONTACT/BOOKINGS */
+
+body.page-contact {
+    background-image:
+        linear-gradient(
+            rgba(5, 5, 8, 0.45),
+            rgba(5, 5, 8, 0.7)
+        ),
+        url("images/IMG-20260814-WA0018.jpg");
+    color: var(--color-accent-purple);
+}
+body.page-contact h1,
+body.page-contact h2,
+body.page-contact h3 {
+    color: var(--color-highlight);
+}
+body.page-contact nav a {
+    color: var(--color-accent-purple);
+}
+body.page-contact nav a:hover {
+    color: var(--color-highlight);
+}
+body.page-contact main {
+    background-color: rgba(5, 5, 8, 0.78);
+    border: 1px solid rgba(112, 17, 180, 0.4);
+}
+
+/* Booking Form */
+
+body.page-contact form {
+    width: 90%;
+    max-width: 650px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: rgba(5, 5, 8, 0.8);
+    border: 1px solid rgba(112, 17, 180, 0.45);
+    border-radius: 8px;
+    box-shadow:
+        0 0 25px rgba(112, 17, 180, 0.12);
+}
+
+body.page-contact label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: var(--color-heading);
+    font-weight: bold;
+}
+body.page-contact input,
+body.page-contact select,
+body.page-contact textarea {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    background-color: #050508;
+    color: white;
+    border: 1px solid var(--color-accent-purple);
+    border-radius: 4px;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+body.page-contact input:focus,
+body.page-contact select:focus,
+body.page-contact textarea:focus {
+    border-color: var(--color-highlight);
+    box-shadow:
+        0 0 10px rgba(112, 17, 180, 0.35);
+}
+body.page-contact textarea {
+    height: 150px;
+    resize: vertical;
+}
+.contact-form{
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: rgba(112, 17, 180, 0.45);
+    border-radius: 10px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+input, textarea {
+    padding: 10px;
+    border: 1px solid #fcf7f7;
+    border-radius: 5px;
+    border: none;
+}
+.submit-button {
+    margin-top: 15px;
+    padding: 10px;
+    border: none;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.submit:hover {
+    background-color: darkred;
+}
+
+/* Booking Button */
+body.page-contact button {
+    display: block;
+    margin: 25px auto 5px;
+    padding: 12px 30px;
+    background-color: var(--color-accent-purple);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+body.page-contact button:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow:
+        0 0 15px rgba(112, 17, 180, 0.45);
+}
+/* Instagram */
+body.page-contact .instagram {
+    text-align: center;
+    margin: 25px auto;
+}
+body.page-contact .instagram img {
+    width: 31.25rem;
+    max-width: 90%;
+    height: auto;
+    object-fit: contain;
+    border: 2px solid var(--color-primary);
+    border-radius: 6px;
+    box-shadow:
+        0 0 20px rgba(112, 17, 180, 0.2);
+}
+/*GALLERY*/
+
+body.page-gallery {
+    background-image:
+        linear-gradient(
+            rgba(5, 5, 8, 0.4),
+            rgba(5, 5, 8, 0.7)
+        ),
+        url("images/dev.n3l0.bts");
+}
+/* Photography Gallery */
+
+body.page-gallery .gallery {
+    display: grid;
+    grid-template-columns:
+        repeat(3, 1fr);
+    gap: 22px;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+body.page-gallery .gallery img {
+    width: 100%;
+    height: 18.75rem;
+    object-fit: cover;
+    border: 2px solid var(--color-primary);
+    border-radius: 7px;
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.45);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+body.page-gallery .gallery img:hover {
+    transform: scale(1.04);
+    border-color: var(--color-accent-purple);
+    box-shadow:
+        0 0 20px rgba(112, 17, 180, 0.45);
+}
+
+/* Gallery Videos */
+body.page-gallery .videos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin: 30px auto;
+}
+body.page-gallery .videos video {
+    width: 31.25rem;
+    max-width: 90%;
+    border: 2px solid var(--color-primary);
+}
+/* Creative Work */
+body.page-gallery .creative {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin: 30px auto;
+    max-width: 1100px;
+}
+body.page-gallery .creative img {
+    width: 31.25rem;
+    max-width: 90%;
+    height: auto;
+    border: 2px solid var(--color-primary);
+    border-radius: 7px;
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.4);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+body.page-gallery .creative img:hover {
+    transform: scale(1.03);
+    box-shadow:
+        0 0 20px rgba(112, 17, 180, 0.4);
+}
+
+/* NEWS & UPDATES*/
+body.page-news main {
+    background-color: rgba(5, 5, 8, 0.72);
+}
+body.page-news main a {
+    color: var(--color-accent-purple);
+    font-weight: bold;
+}
+body.page-news main a:hover {
+    color: var(--color-highlight);
+}
+/*PRODUCTS & SERVICES*/
+body.page-products {
+    position: relative;
+    background-image:
+        linear-gradient(
+            rgba(5, 5, 8, 0.4),
+            rgba(5, 5, 8, 0.7)
+        ), url("images/dev.n3l0.png");
+}
+body.page-products main {
+    background-color: rgba(5, 5, 8, 0.7);
+}
+
+/* Services Lists */
+body.page-products ul {
+    width: 80%;
+    max-width: 650px;
+    margin: 20px auto;
+    padding: 20px 40px;
+    background-color: rgba(87, 87, 141, 0.07);
+    border-left: 3px solid var(--color-accent-purple);
+    border-radius: 5px;
+}
+body.page-products li {
+    margin: 10px;
+}
+/* Packages */
+body.page-products .packages {
+    text-align: center;
+    margin: 30px auto;
+}
+body.page-products .packages img {
+    width: 56.25rem;
+    max-width: 95%;
+    height: auto;
+    border: 2px solid var(--color-primary);
+    border-radius: 7px;
+    box-shadow:
+        0 0 25px rgba(112, 17, 180, 0.2);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+body.page-products .packages img:hover {
+    transform: scale(1.015);
+    box-shadow:
+        0 0 30px rgba(112, 17, 180, 0.4);
+}
+/* Booking Section */
+body.page-products .booking {
+    text-align: center;
+    padding: 20px;}
+body.page-products .booking a {
+    display: inline-block;
+    color: white;
+    background-color: var(--color-accent-purple);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 25px;
+    border-radius: 4px;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+body.page-products .booking a:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow:
+        0 0 15px rgba(112, 17, 180, 0.45);
+}
+/*MOBILE / TABLET*/
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;}
+    h2 {
+        font-size: 1.4rem;}
+    main {
+        width: 95%;
+        padding: 20px;
+        margin: 20px auto;}
+    nav a {
+        display: block;
+        margin: 4px auto;
+        width: fit-content;}
+    header img {width: 5.625rem;
+        height: 5.625rem;}
+    ul {width: 95%;
+        padding: 15px 25px;}
+    /* Gallery */
+    body.page-gallery .gallery {
+        grid-template-columns: 1fr;
+        max-width: 90%;}
+    body.page-gallery .gallery img {height: auto;}
+    body.page-gallery .creative img {width: 100%; max-width: 100%;}
+    /* Contact */
+    body.page-contact form {
+        width: 95%;
+        padding: 20px;}
+    /* Packages */
+body.page-products .packages img {width: 100%;}
+}
+/*SMALL PHONES */
+@media (max-width: 480px) 
+{body {background-attachment: scroll;}
+    h1 {font-size: 1.6rem;}
+    h2 {font-size: 1.3rem;}
+    h3 {font-size: 1rem;}
+    main {padding: 15px;}
+    nav {padding: 10px;}
+    nav a {font-size: 14px;padding: 6px 8px;}
+    p {font-size: 14px;}
+}
+
