@@ -1,0 +1,6 @@
+Copy your images into this folder, keeping these exact names:
+photo.jpg, dev.n3l0.logo.jpg, dev.n3l0.png, Dev.nel0.png, prices.png,
+photography-packages-prices.png, dev.N3L0.StudiosINSTAGRAM.png,
+studio1.jpg, studio2.jpg, studio4.jpg, studio5.jpg, studio10.jpg,
+IMG-20260907-WA0007.jpg, -WA0008, -WA0009, -WA0011, -WA0012, -WA0013 (.jpg),
+Inside-Look-Miami-s-Best-Photo-Studio-.mp4.mp4

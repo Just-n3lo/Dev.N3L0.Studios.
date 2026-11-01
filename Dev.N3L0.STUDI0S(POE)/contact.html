@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Session | Contact dev.N3L0.Studios Johannesburg</title>
+    <meta name="description" content="Contact dev.N3L0.Studios in Johannesburg to book a photography, videography or web session. Send a message, find us on the map or call +27 67 951 7008.">
+    <meta name="keywords" content="book photographer Johannesburg, contact dev.N3L0.Studios, book videographer, photography booking, web developer contact">
+    <meta name="author" content="dev.N3L0.Studios">
+    <meta name="robots" content="index, follow">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#050508">
+    <link rel="icon" type="image/jpeg" href="images/dev.n3l0.logo.jpg">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+    <script src="js/script.js" defer></script>
+   
+</head>
+
+<body class="Contact page-contact">
+        <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- Header and Logo -->
+    <header>
+
+        <img src="images/dev.n3l0.logo.jpg"
+             alt="dev.N3L0.Studios Logo">
+    </header>
+        <!-- Navigation Bar -->
+        <nav aria-label="Main navigation">
+            <a href="index.html">dev.N3L0.Studios |</a>
+            <a href="about.html">About Us |</a>
+            <a href="products-services.html">Products &amp; Services |</a>
+            <a href="gallery.html">Gallery |</a>
+            <a href="news-updates.html">News and Updates |</a>
+            <a href="enquiry.html">Enquiry |</a>
+            <a href="contact.html">Book a Session</a>
+    </nav>
+
+    
+
+    <hr>
+
+    <main id="main">
+
+        <h1>// Get in touch</h1>
+
+        <p>
+            Have a question, want to book a session, or interested in our services?
+            Get in touch with dev.N3L0.Studios.
+        </p>
+
+        <hr>
+
+        <!-- Booking Information -->
+        <h2>Bookings Information</h2>
+
+        <p>
+            <strong>Email:</strong>
+            <a href="mailto:tshwanelos120@gmail.com">tshwanelos120@gmail.com</a>
+        </p>
+
+        <p>
+            <strong>Phone:</strong>
+          <a href="tel:+27679517008">+27 67 951 7008</a>
+        </p>
+
+        <p>
+            <strong>Location:</strong>
+            Johannesburg, Gauteng
+        </p>
+<!-- Interactive map -->
+        <h2>Find Us</h2>
+        <div id="map" role="region" aria-label="Map showing the studio location in Johannesburg"></div>
+        <p>
+            <button type="button" class="btn alt" id="locate-btn">How far am I from the studio?</button>
+        </p>
+        <p id="map-status" aria-live="polite"></p>
+
+        <!-- Social Media -->
+        <h2>Social Media</h2>
+
+        <p>
+            Follow us for our latest photography,
+            videography and development.
+        </p>
+
+        <div class="instagram">
+            <img src="images/dev.N3L0.StudiosINSTAGRAM.png"
+                 alt="dev.N3L0.Studios Instagram page"
+                 loading="lazy" decoding="async">
+        </div>
+
+        <hr>
+
+        <!-- Booking Form -->
+        <h2>Send Us a Message</h2>
+<div class="contact-form">
+            <form id="contact-form" autocomplete="on">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" autocomplete="name" required>
+ 
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="e.g. 067 951 7008" required>
+ 
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" autocomplete="email" required>
+ 
+                <label for="messageType">Message Type:</label>
+                <select id="messageType" name="messageType" required>
+                    <option value="">-- Choose a message type --</option>
+                    <option value="Booking request">Booking request</option>
+                    <option value="General question">General question</option>
+                    <option value="Feedback">Feedback</option>
+                    <option value="Collaboration or sponsorship">Collaboration or sponsorship</option>
+                </select>
+ 
+                <label for="services">Service:</label>
+                <select id="services" name="services" required>
+                    <option value="">-- Choose a service --</option>
+                    <option value="photography">Photography</option>
+                    <option value="videography">Videography</option>
+                    <option value="development">Software Development</option>
+                </select>
+ 
+                <fieldset class="radio-group">
+                    <legend>Preferred contact method:</legend>
+                    <div class="radio-row">
+                        <input type="radio" id="method-email" name="contactMethod" value="Email" checked>
+                        <label for="method-email">Email</label>
+                    </div>
+                    <div class="radio-row">
+                        <input type="radio" id="method-phone" name="contactMethod" value="Phone call">
+                        <label for="method-phone">Phone call</label>
+                    </div>
+      <div class="radio-row">
+                        <input type="radio" id="method-whatsapp" name="contactMethod" value="WhatsApp">
+                        <label for="method-whatsapp">WhatsApp</label>
+                    </div>
+                </fieldset>
+ 
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" maxlength="1000"
+                          placeholder="Tell us about your booking or project..." required></textarea>
+ 
+                <div class="check-row">
+                    <input type="checkbox" id="consent" name="consent">
+                    <label for="consent">I agree that dev.N3L0.Studios may contact me about this message.</label>
+                </div>
+ 
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+
+        <p>dev.N3L0.Studios</p>
+
+        <p>Code. Create. Capture.</p>
+
+        <p>
+            &copy; 2026 dev.N3L0.Studios/ST10515028
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
+

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography, Video & Web Services | dev.N3L0.Studios</title>
+    <meta name="description" content="Explore dev.N3L0.Studios photography, videography and software development services. Search services, compare Bronze, Silver and Gold packages and book online.">
+    <meta name="keywords" content="photography packages, videography services, website development, portrait photography, event photography, photo editing, Bronze Silver Gold packages, Johannesburg">
+    <meta name="author" content="dev.N3L0.Studios">
+    <meta name="robots" content="index, follow">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="theme-color" content="#050508">
+    <link rel="icon" type="image/jpeg" href="images/dev.n3l0.logo.jpg">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body class="page-products">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- Header and Logo -->
+    <header>
+
+        <img class="logo" src="images/photo.jpg"
+             alt="dev.N3L0.Studios Logo">
+
+        <!-- Navigation Bar -->
+        <nav aria-label="Main navigation">
+            <a href="index.html">dev.N3L0.Studios |</a>
+            <a href="about.html">About Us |</a>
+            <a href="products-services.html">Products &amp; Services |</a>
+            <a href="gallery.html">Gallery |</a>
+            <a href="news-updates.html">News and Updates |</a>
+            <a href="enquiry.html">Enquiry |</a>
+            <a href="contact.html">Book a Session</a>
+    </nav>
+
+    </header>
+
+    <hr>
+
+    <main id="main">
+
+        <h1>Products and Services</h1>
+
+        <p>
+            Explore the creative and digital services offered by
+            dev.N3L0.Studios.
+        </p>
+
+        <hr>
+
+        <!-- Photography -->
+        <h2>Photography</h2>
+
+        <p>
+            Professional photography for personal, social,
+            business projects and events.
+        </p>
+
+        <ul>
+            <li>Portrait Photography</li>
+            <li>Event Photography</li>
+            <li>Lifestyle Photography</li>
+            <li>Photo Editing</li>
+        </ul>
+
+        <!-- Videography -->
+        <h2>Videography</h2>
+
+        <p>
+            Creative video production and editing for events,
+            social media and business projects.
+        </p>
+
+        <ul>
+            <li>Event Videography</li>
+            <li>Promotional Videos</li>
+            <li>Social Media Videos</li>
+            <li>Cinematic Lifestyle Videos</li>
+            <li>Video Editing</li>
+        </ul>
+
+        <!-- Software Development -->
+        <h2>Software Development</h2>
+
+        <p>
+            Digital solutions designed to help clients build
+            their online presence.
+        </p>
+
+        <ul>
+            <li>Website Development</li>
+            <li>Portfolio Websites</li>
+            <li>Software Development</li>
+            <li>Web Applications (Coming Soon)</li>
+        </ul>
+
+        <hr>
+
+<!-- Dynamic, searchable services  js -->
+        <h2>Search Our Services</h2>
+        <div id="services-app"></div>
+
+        <hr>
+
+        <!-- Packages -->
+        <h2>Our Packages</h2>
+
+        <div class="tabs">
+            <div class="tab-list" role="tablist" aria-label="Service packages">
+                <button type="button" role="tab" id="tabbtn-photo" aria-controls="tab-photo" data-tab="tab-photo">Photography</button>
+                <button type="button" role="tab" id="tabbtn-video" aria-controls="tab-video" data-tab="tab-video">Videography</button>
+                <button type="button" role="tab" id="tabbtn-dev" aria-controls="tab-dev" data-tab="tab-dev">Development</button>
+            </div>
+            <div class="tab-panel" role="tabpanel" id="tab-photo" aria-labelledby="tabbtn-photo">
+                <p>Our Bronze (R1800), Silver (R2500) and Gold (R3300) photography packages are available now. Platinum and Diamond packages are coming soon and will include video editing.</p>
+            </div>
+            <div class="tab-panel" role="tabpanel" id="tab-video" aria-labelledby="tabbtn-video">
+                <p>We are working on our professional videography packages. Contact us to discuss your project in the meantime.</p>
+            </div>
+            <div class="tab-panel" role="tabpanel" id="tab-dev" aria-labelledby="tabbtn-dev">
+                <p>Websites, portfolio sites and custom software for individuals and businesses. Web applications are coming soon.</p>
+            </div>
+        </div>
+ 
+        <!-- Interactive price list (built by js/script.js from the PACKAGES array) -->
+        <div id="pricing-cards">
+            <noscript>
+                <div class="packages">
+                    <img src="images/photography-packages-prices.png"
+                         alt="dev.N3L0.Studios price list: Bronze R1800, Silver R2500, Gold R3300. Platinum and Diamond coming soon."
+                         loading="lazy" decoding="async">
+                </div>
+            </noscript>
+        </div>
+        <hr>
+
+        <!-- Booking -->
+        <div class="booking">
+
+            <h2>Book a Session</h2>
+
+            <h2>
+                Ready to make something worth looking at?
+            </h2>
+
+            <p>
+                Tell us the date and what you need |
+                Reply within a day.
+            </p>
+
+            <p>
+                // Let's put it on the calendar
+            </p>
+            <a class="btn" href="contact.html">Book a Session</a>
+            <p>
+                <button type="button" class="btn alt" data-modal-target="how-it-works">How booking works</button>
+            </p>
+        </div>
+        <!-- Modal window -->
+        <div class="modal" id="how-it-works" role="dialog" aria-modal="true" aria-labelledby="hiw-title">
+            <div class="modal-content">
+                <button type="button" class="modal-close" aria-label="Close">&times;</button>
+                <h2 id="hiw-title">How booking works</h2>
+                <p>1. Tell us the date and what you need.</p>
+                <p>2. We reply within a day.</p>
+                <p>3. We plan your shoot or project on a short call.</p>
+                <p>4. We deliver fewer, better frames.</p>
+                <p><a class="btn" href="enquiry.html">Get an instant quote</a></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>dev.N3L0.Studios</p>
+        <p>Code. Create. Capture.</p>
+        <p>
+            &copy; 2026 dev.N3L0.Studios/ST10515028
+        </p>
+    </footer>
+</body>
+</html>
+

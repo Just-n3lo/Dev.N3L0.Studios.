@@ -1,0 +1,6 @@
+# dev.N3L0.Studios - robots.txt
+# Allow all search engine crawlers to index every page.
+User-agent: *
+Allow: /
+
+Sitemap: https://Just-n3lo.github.io/Dev.N3L0.Studios./sitemap.xml
