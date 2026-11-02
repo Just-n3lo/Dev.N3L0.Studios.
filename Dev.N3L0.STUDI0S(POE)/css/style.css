@@ -108,8 +108,8 @@ header {
     padding-bottom: 5px;
 }
 /* Logo
-   CHANGED: removed the invalid "P/S logo{...}" rule. It was not a valid
-   selector so browsers ignored it; header img below already sizes the logo. */
+    i removed the invalid "P/S logo{...}" rule. It was not a valid
+   selector header img below already sizes the logo. */
 header img {
     width: 100px;
     height: 100px;
@@ -229,9 +229,7 @@ footer p {
     margin: 5px auto;
     color: var(--color-text);
 }
-/* HOME PAGE
-   CHANGED (all pages below): image paths now start with ../ because a url()
-   inside a CSS file is read relative to the CSS folder, not the HTML page. */
+/* home page*/
 
 body.page-index {
     background-image:
@@ -319,7 +317,7 @@ body.page-contact label {
     margin-bottom: 5px;
     color: var(--color-heading);
     font-weight: bold;
-    text-align: left;            /* ADDED: labels line up with the fields */
+    text-align: left;            /* added labels line up with the fields */
 }
 body.page-contact input,
 body.page-contact select,
@@ -380,7 +378,7 @@ input, textarea {
     border-radius: 5px;
     cursor: pointer;
 }
-.submit-button:hover {           /* CHANGED: was ".submit:hover", which matched nothing */
+.submit-button:hover {           
     background-color: darkred;
 }
 
@@ -588,22 +586,16 @@ body.page-products .booking a:hover {
     box-shadow:
         0 0 15px rgba(112, 17, 180, 0.45);
 }
+/*javascript controlled elements
+   Styles for the elements for my javascript file builds or controls.*/
 
-
-/* =========================================================
-   JAVASCRIPT FEATURES  (added in Part 3)
-   Styles for the elements script.js builds or controls.
-   ========================================================= */
-
-/* ---------- Active nav link (set by initActiveNav) ----------
-   "body nav a.active" is written this way so it beats the
-   page-specific nav colours above. */
+/* Active nav link (initActiveNav) "body nav a.active" is written this way so it beats the page specific nav colours above. */
 body nav a.active {
     color: var(--color-highlight);
     background-color: rgba(112, 17, 180, 0.22);
 }
 
-/* ---------- Scroll reveal animation (initScrollReveal) ---------- */
+/*Scroll reveal animation */
 .reveal {
     opacity: 0;
     transform: translateY(24px);
@@ -613,9 +605,8 @@ body nav a.active {
     opacity: 1;
     transform: none;
 }
-body.no-scroll { overflow: hidden; }   /* stops page scrolling behind a modal/lightbox */
-
-/* ---------- Buttons ---------- */
+body.no-scroll { overflow: hidden; }   /*stops page scrolling behind a modal/lightbox*/
+/*Button*/
 .btn {
     display: inline-block;
     padding: 10px 22px;
@@ -638,7 +629,7 @@ body.no-scroll { overflow: hidden; }   /* stops page scrolling behind a modal/li
 .btn.alt:hover { background-color: rgba(112, 17, 180, 0.3); }
 .btn.disabled, .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
 
-/* ---------- Accordion (initAccordion) ---------- */
+/*accordion*/
 .accordion { max-width: 800px; margin: 25px auto; }
 .accordion-item {
     border: 1px solid rgba(112, 17, 180, 0.4);
@@ -674,7 +665,7 @@ body.no-scroll { overflow: hidden; }   /* stops page scrolling behind a modal/li
 }
 .accordion-panel p { padding: 0 18px 12px; text-align: left; }
 
-/* ---------- Tabs (initTabs) ---------- */
+/*Tabs*/
 .tabs { max-width: 800px; margin: 25px auto; }
 .tab-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; border-bottom: 1px solid var(--color-primary); }
 .tab-list button {
@@ -697,7 +688,7 @@ body.no-scroll { overflow: hidden; }   /* stops page scrolling behind a modal/li
 .tab-panel { padding: 15px 0; animation: fadeIn 0.4s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
-/* ---------- Modal + Lightbox overlay (initModals / initLightbox) ---------- */
+/*Modal and Lightbox overlay*/
 .modal, .lightbox {
     position: fixed;
     inset: 0;
@@ -737,8 +728,7 @@ body.no-scroll { overflow: hidden; }   /* stops page scrolling behind a modal/li
     line-height: 1;
 }
 .modal-close:hover, .lb-close:hover { color: var(--color-white); }
-
-/* Lightbox only */
+/*Lightbox */
 .lightbox figure { margin: 0; max-width: 85vw; text-align: center; }
 .lightbox figure img {
     max-width: 100%;
@@ -763,8 +753,7 @@ body.no-scroll { overflow: hidden; }   /* stops page scrolling behind a modal/li
 }
 .lb-prev:hover, .lb-next:hover { background: var(--color-accent-purple); }
 .gallery img, .creative img { cursor: zoom-in; }
-
-/* ---------- Search / filter / sort (initFilterList) ---------- */
+/*Search, filter and sort */
 .filter-bar { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 20px 0; }
 .filter-bar input, .filter-bar select {
     padding: 10px 12px;
@@ -807,7 +796,7 @@ body.no-scroll { overflow: hidden; }   /* stops page scrolling behind a modal/li
 }
 .empty { grid-column: 1 / -1; }
 
-/* ---------- Form validation states (setupValidation / showError) ---------- */
+/*Form validation */
 .contact-form button[type="submit"] {
     margin-top: 10px;
 }
@@ -818,7 +807,7 @@ input.invalid, select.invalid, textarea.invalid { border: 2px solid #ff5c7a !imp
 input.valid, select.valid, textarea.valid { border: 2px solid #43c07a !important; }
 .error-msg { display: block; min-height: 1em; margin-top: 4px; color: #ff8fa3; font-size: 0.85rem; text-align: left; }
 
-/* ---------- Email preview + enquiry result ---------- */
+/*Email preview and enquiry results */
 .email-preview, #enquiry-result {
     max-width: 650px;
     margin: 30px auto;
@@ -854,7 +843,7 @@ table.quote td:last-child { text-align: right; white-space: nowrap; }
 table.quote tr.total td { font-weight: bold; font-size: 1.1rem; color: var(--color-highlight); border-bottom: none; }
 .alt-dates { max-width: 100%; }
 
-/* ---------- Map (initMap) ---------- */
+/*Map*/
 #map {
     width: 100%;
     max-width: 800px;
@@ -866,8 +855,7 @@ table.quote tr.total td { font-weight: bold; font-size: 1.1rem; color: var(--col
 }
 .map-fallback { padding: 20px; }
 #map-status { min-height: 1.4em; font-size: 0.9rem; }
-
-/* ---------- Interactive price list (initPricingCards) ---------- */
+/*Interactive price list*/
 .pricing-title { display: flex; flex-direction: column; align-items: center; gap: 6px; margin: 10px 0 25px; }
 .pricing-brand {
     font-size: clamp(1.2rem, 4vw, 1.8rem);
@@ -898,8 +886,7 @@ table.quote tr.total td { font-weight: bold; font-size: 1.1rem; color: var(--col
     margin: 20px 0;
     align-items: stretch;
 }
-
-/* Each tier sets its own colours; everything else reuses them */
+/* Each tier sets its own colours everything else reuses them */
 .tier-bronze   { --tier: #e39a52; --glow: rgba(227, 154, 82, 0.45);  --band: rgba(227, 154, 82, 0.18); }
 .tier-silver   { --tier: #c9d1e3; --glow: rgba(201, 209, 227, 0.40); --band: rgba(201, 209, 227, 0.14); }
 .tier-gold     { --tier: #f4c542; --glow: rgba(244, 197, 66, 0.45);  --band: rgba(244, 197, 66, 0.16); }
@@ -1013,7 +1000,7 @@ table.quote tr.total td { font-weight: bold; font-size: 1.1rem; color: var(--col
 .pricing-summary { min-height: 2.6em; margin-top: 18px; padding: 10px 15px; border: 1px dashed rgba(112, 17, 180, 0.5); border-radius: 8px; color: var(--color-text); }
 .pricing-notes { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 40px; margin-top: 10px; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; }
 
-/* ---------- Extra form controls: radio + checkbox + counter ---------- */
+/*form controls checkbox and counter*/
 fieldset.radio-group {
     margin: 15px 0 0;
     padding: 10px 15px;
@@ -1042,8 +1029,7 @@ body.page-contact input[type="checkbox"] {
 }
 .char-counter { display: block; text-align: right; font-size: 0.8rem; color: var(--color-text); }
 .email-preview .ok { color: #43c07a; }
-
-/* ---------- Skip link (keyboard accessibility) ---------- */
+/*Skip link */
 .skip-link {
     position: absolute;
     left: -9999px;
@@ -1055,18 +1041,14 @@ body.page-contact input[type="checkbox"] {
 }
 .skip-link:focus { left: 10px; top: 10px; }
 
-/* Intro sentence that used to be an h3 under the h1 (keeps heading order h1 > h2) */
 h2.subhead { font-size: 1.2rem; }
-
-/* ---------- Accessibility ---------- */
+/*Accessibility*/
 :focus-visible { outline: 2px solid var(--color-highlight); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .reveal { opacity: 1; transform: none; }
 }
-
-
-/*MOBILE / TABLET*/
+/*Small phone / TABLET*/
 @media (max-width: 768px) {
     h1 {
         font-size: 1.8rem;}
@@ -1096,7 +1078,7 @@ h2.subhead { font-size: 1.2rem; }
         padding: 20px;}
     /* Packages */
     body.page-products .packages img {width: 100%;}
-    /* ADDED for JS features */
+    /* JS features */
     #map { height: 280px; }
     .lb-prev, .lb-next { position: absolute; bottom: 20px; margin: 0; }
     .lb-prev { left: 20px; }
@@ -1113,3 +1095,12 @@ h2.subhead { font-size: 1.2rem; }
     nav a {font-size: 14px;padding: 6px 8px;}
     p {font-size: 14px;}
 }
+/* Map extras (initMap) */
+.map-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; }
+#map { cursor: grab; }
+#map:active { cursor: grabbing; }
+.leaflet-container { font-family: inherit; }
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip { background: #14141f; color: var(--color-text); border: 1px solid var(--color-primary); }
+.leaflet-popup-content a { color: var(--color-link); }
+.leaflet-control-layers { border-radius: 6px; }
