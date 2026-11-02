@@ -1,27 +1,20 @@
+/*dev.N3L0.Studios  script.js
+   JavaScript and Leaflet for the map */
+/* Reference list is in the read me file*/
+'use strict';
 
-   dev.N3L0.Studios - script.js
-  // Vanilla JavaScript (+ Leaflet for the map).
- 
-/* References (Harvard, IIE style - full list in README.md)
-   Agafonkin, V. (2023) Leaflet: an open-source JavaScript library for interactive maps.
-   Mozilla (n.d.) MDN Web Docs: Intersection Observer API, Fetch API, Constraint validation.
-   World Wide Web Consortium (n.d.) WAI-ARIA Authoring Practices Guide: accordion, tabs, dialog.
-   OpenStreetMap contributors (n.d.) OpenStreetMap. */
-
-
-
-   //1. CONFIGURE the only section you need to edit for content
-   
+  // 1. CONFIG the only section you need to edit for content
 const CONFIG = {
-  // Same address that is shown on the Contact page.
+  // Same address that is shown on the Contact page
   recipientEmail: 'tshwanelos120@gmail.com',
 
-  // Demo endpoint that accepts POST requests and echoes them back.
-  ajaxEndpoint: 'https://jsonplaceholder.typicode.com/posts',
+  // Web3Forms delivers every submission straight to my emails
+  web3formsKey: '1ebe3d6e-ad6f-4606-9289-470748e26129',
+  formEndpoint: 'https://api.web3forms.com/submit',
 
   currency: 'R',
 
-  // Photography prices are REAL price list.
+  // Photography prices.
   pricing: {
     photography: { Bronze: 1800, Silver: 2500, Gold: 3300 },   // from the official price list
     videography: { Bronze: 1500, Silver: 3000, Gold: 5000 },
@@ -31,38 +24,43 @@ const CONFIG = {
   rushFee: 0.15,                 // +15% if the date is less than 7 days away
   bookedDates: ['2026-11-14', '2026-12-05', '2026-12-24'],   // YYYY-MM-DD
   closedWeekdays: [0],           // 0 = Sunday
-  map: { lat: -26.2041, lng: 28.0473, zoom: 11 }   // Johannesburg
+
+  //random location in Johannesburg
+  map: { lat: -26.2041, lng: 28.0473, zoom: 11, serviceRadiusKm: 30 }
 };
 
-//Dynamic content js
+/* Dynamic content (rendered by JavaScript, not hard-coded in HTML) */
 const SERVICES = [
-  { key: 'photography', category: 'Photography',title: 'Portrait Photography', price: CONFIG.pricing.photography.Bronze,  available: true,  description: 'Studio and outdoor portraits that show you at your best.' },
-  { key: 'photography', category: 'Photography',title: 'Event Photography', price: CONFIG.pricing.photography.Bronze, available: true,  description: 'Birthdays, graduations and functions captured candidly.' },
-  { key: 'photography', category: 'Photography',title: 'Lifestyle Photography',price: CONFIG.pricing.photography.Bronze, available: true,  description: 'Natural, story-driven shots for people and brands.' },
-  { key: 'photography', category: 'Photography',title: 'Photo Editing', price: CONFIG.pricing.photography.Bronze, priceLabel: 'Included in every package',  available: true,  description: 'Colour grading, retouching and clean-up of your images.' },
-  { key: 'videography', category: 'Videography',title: 'Event Videography',price: 2500, available: true,  description: 'Full event coverage with a polished highlight reel.' },
-  { key: 'videography', category: 'Videography',title: 'Promotional Videos', price: 3500, available: true,  description: 'Short brand videos that sell your product or service.' },
-  { key: 'videography', category: 'Videography',title: 'Social Media Videos',price: 1500, available: true,  description: 'Vertical, scroll-stopping clips for Instagram and TikTok.' },
-  { key: 'videography', category: 'Videography',title: 'Cinematic Lifestyle Videos', price: 4000, available: true, description: 'Film-style visuals with a story and soundtrack.' },
-  { key: 'videography', category: 'Videography',title: 'Video Editing',price: 900,  available: true,  description: 'Cutting, colour, sound and subtitles for your footage.' },
+  { key: 'photography', category: 'Photography', title: 'Portrait Photography', price: CONFIG.pricing.photography.Bronze,  available: true,  description: 'Studio and outdoor portraits that show you at your best.' },
+  { key: 'photography', category: 'Photography', title: 'Event Photography',    price: CONFIG.pricing.photography.Bronze, available: true,  description: 'Birthdays, graduations and functions captured candidly.' },
+  { key: 'photography', category: 'Photography', title: 'Lifestyle Photography',price: CONFIG.pricing.photography.Bronze, available: true,  description: 'Natural, story-driven shots for people and brands.' },
+  { key: 'photography', category: 'Photography', title: 'Photo Editing',        price: CONFIG.pricing.photography.Bronze, priceLabel: 'Included in every package',  available: true,  description: 'Colour grading, retouching and clean-up of your images.' },
+  { key: 'videography', category: 'Videography', title: 'Event Videography',    price: 2500, available: true,  description: 'Full event coverage with a polished highlight reel.' },
+  { key: 'videography', category: 'Videography', title: 'Promotional Videos',   price: 3500, available: true,  description: 'Short brand videos that sell your product or service.' },
+  { key: 'videography', category: 'Videography', title: 'Social Media Videos',  price: 1500, available: true,  description: 'Vertical, scroll-stopping clips for Instagram and TikTok.' },
+  { key: 'videography', category: 'Videography', title: 'Cinematic Lifestyle Videos', price: 4000, available: true, description: 'Film-style visuals with a story and soundtrack.' },
+  { key: 'videography', category: 'Videography', title: 'Video Editing',        price: 900,  available: true,  description: 'Cutting, colour, sound and subtitles for your footage.' },
   { key: 'development', category: 'Software Development', title: 'Website Development',  price: 3000, available: true,  description: 'Fast, responsive websites built for your business.' },
   { key: 'development', category: 'Software Development', title: 'Portfolio Websites',   price: 2500, available: true,  description: 'Show your work online with a clean personal portfolio.' },
   { key: 'development', category: 'Software Development', title: 'Software Development', price: 6000, available: true,  description: 'Custom tools and software built around your workflow.' },
-  { key: 'development', category: 'Software Development', title: 'Web Applications', price: 8000, available: false, description: 'Interactive web apps. Launching soon.' }
+  { key: 'development', category: 'Software Development', title: 'Web Applications',     price: 8000, available: false, description: 'Interactive web apps. Launching soon.' }
 ];
+
 const NEWS = [
-  { date: '2026-10-28', category: 'Launch',title: 'Official launch coming soon', body: 'dev.N3L0.Studios is preparing for the official launch of our photography, videography and development services. Follow our social pages for launch updates.' },
-  { date: '2026-10-15', category: 'Packages',title: 'Bronze, Silver and Gold packages are live', body: 'Our Bronze, Silver and Gold photography packages are now available. View them on the Products & Services page.' },
-  { date: '2026-10-10', category: 'Packages',title: 'Platinum and Diamond packages coming', body: 'Platinum and Diamond packages are coming soon and will include video editing services.' },
+  { date: '2026-10-28', category: 'Launch',      title: 'Official launch coming soon', body: 'dev.N3L0.Studios is preparing for the official launch of our photography, videography and development services. Follow our social pages for launch updates.' },
+  { date: '2026-10-15', category: 'Packages',    title: 'Bronze, Silver and Gold packages are live', body: 'Our Bronze, Silver and Gold photography packages are now available. View them on the Products & Services page.' },
+  { date: '2026-10-10', category: 'Packages',    title: 'Platinum and Diamond packages coming', body: 'Platinum and Diamond packages are coming soon and will include video editing services.' },
   { date: '2026-09-30', category: 'Videography', title: 'Videography packages in progress', body: 'We are currently working on our professional videography packages.' },
   { date: '2026-09-20', category: 'Development', title: 'Website and software development', body: 'We also build websites and software for individuals and businesses.' },
   { date: '2026-09-01', category: 'Announcements', title: 'Client announcements', body: 'Important information about bookings, projects, services and special offers will be posted here.' }
 ];
-//   2. HELPERS
+
+
+   //2. helpers and utilities
 const $  = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
-// Stops user text being treated as HTML
+// Stops user text being treated as HTML (prevents XSS when using innerHTML)
 const escapeHTML = (str) => String(str).replace(/[&<>"']/g, (c) => (
   { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
 ));
@@ -79,7 +77,7 @@ const toISO = (d) =>
   `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
 const startOfToday = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; };
-   //3. NAVIGATION + SCROLL ANIMATIONS
+  // 3. navigation and scrolling
 function initActiveNav() {
   const current = decodeURIComponent(location.pathname.split('/').pop() || 'index.html').toLowerCase();
   $$('nav a').forEach((link) => {
@@ -100,7 +98,7 @@ function initScrollReveal() {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        obs.unobserve(entry.target);        // animate once only
+        obs.unobserve(entry.target);        //animates once 
       }
     });
   }, { threshold: 0.12 });
@@ -109,8 +107,7 @@ function initScrollReveal() {
 }
 
 
-  // 4. INTERACTIVE ELEMENTS: accordion, tabs, modal
-  
+   //4. interactive elemenrs accordion, tabs, modal
 function initAccordion() {
   $$('.accordion').forEach((accordion) => {
     const items = $$('.accordion-item', accordion);
@@ -201,9 +198,9 @@ function initModals() {
   });
 }
 
-
-   //5. GALLERY LIGHTBOX
-   
+/* ---------------------------------------------------------
+   5. GALLERY LIGHTBOX
+   --------------------------------------------------------- */
 function initLightbox() {
   const images = $$('.gallery img, .creative img');
   if (!images.length) return;
@@ -279,8 +276,10 @@ function initLightbox() {
     if (Math.abs(diff) > 50) show(diff > 0 ? index - 1 : index + 1);
   }, { passive: true });
 }
-   //6. DYNAMIC CONTENT + SEARCH / FILTER / SORT
-   //One reusable function powers both the services list and the news feed.
+
+  // 6. dynamic content
+  // One reusable function powers the services list and the news feed
+
 function initFilterList({ rootId, data, categories, searchKeys, sorts, renderItem, emptyText, placeholder }) {
   const root = document.getElementById(rootId);
   if (!root) return;
@@ -378,12 +377,8 @@ function initNewsFeed() {
       </article>`
   });
 }
-
-
- //  6b. INTERACTIVE PRICE LIST (replaces the old price-list picture)
-   //One array drives the cards, and the photography prices come
-   //from CONFIG.pricing so the quote calculator always matches.
-  
+   //6b. INTERACTIVE PRICE LIST (replaces the old price-list picture)
+   
 const PACKAGES = [
   { name: 'Bronze', level: 'Basic', tier: 'bronze', photos: '10', price: CONFIG.pricing.photography.Bronze,
     badge: 'Best for personal use',
@@ -477,7 +472,7 @@ function initPricingCards() {
     });
   });
 
-  // Count-up animation when a price scrolls into view (skipped for reduced motion)
+  // Count up animation when a price scrolls into view
   const animate = 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!animate) return;
 
@@ -502,52 +497,146 @@ function initPricingCards() {
   amounts.forEach((el) => observer.observe(el));
 }
 
-
-   //7. INTERACTIVE MAP (Leaflet + OpenStreetMap)
-   
+/* ---------------------------------------------------------
+   7. INTERACTIVE MAP (Leaflet + OpenStreetMap)
+    switchable map styles (street / dark / satellite), click anywhere to
+   measure the distance to the studio, "find distance from me" with a route
+   line, directions link and a reset button.
+    --------------------------------------------------------- */
 function initMap() {
   const el = document.getElementById('map');
   if (!el) return;
 
-  if (typeof L === 'undefined') {       // Leaflet failed to load
-    el.innerHTML = '<p class="map-fallback">Map unavailable. We are based in Johannesburg, Gauteng.</p>';
+  const { lat, lng, zoom, serviceRadiusKm } = CONFIG.map;
+  const studio = [lat, lng];
+
+  if (typeof L === 'undefined') {       
+    el.innerHTML = `<p class="map-fallback">The interactive map could not load. We are based in Johannesburg, Gauteng.
+      <a href="https://www.openstreetmap.org/?mlat=${lat}&amp;mlon=${lng}#map=${zoom}/${lat}/${lng}" target="_blank" rel="noopener noreferrer">Open in OpenStreetMap</a></p>`;
     return;
   }
 
-  const { lat, lng, zoom } = CONFIG.map;
-  const map = L.map(el, { scrollWheelZoom: false }).setView([lat, lng], zoom);
+  const map = L.map(el, { scrollWheelZoom: false }).setView(studio, zoom);
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  //Map styles the visitor can switch between
+  const street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  });
+  const dark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    maxZoom: 19, subdomains: 'abcd',
+    attribution: '&copy; OpenStreetMap contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+  });
+  const satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 18,
+    attribution: 'Tiles &copy; Esri, Maxar, Earthstar Geographics'
+  });
+  street.addTo(map);
+  L.control.layers({ Street: street, Dark: dark, Satellite: satellite }, null, { collapsed: true }).addTo(map);
+  L.control.scale({ imperial: false }).addTo(map);
 
-  L.marker([lat, lng]).addTo(map)
-    .bindPopup('<strong>dev.N3L0.Studios</strong><br>Johannesburg, Gauteng')
+  //Studio marker, popup and service area
+  const directionsTo = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+  L.circle(studio, {
+    radius: serviceRadiusKm * 1000,
+    color: '#7011b4', weight: 2, fillColor: '#7011b4', fillOpacity: 0.08
+  }).addTo(map).bindTooltip(`We cover about ${serviceRadiusKm} km around Johannesburg`, { sticky: true });
+
+  L.marker(studio, { title: 'dev.N3L0.Studios', alt: 'dev.N3L0.Studios location marker' }).addTo(map)
+    .bindPopup(`<strong>dev.N3L0.Studios</strong><br>Johannesburg, Gauteng<br>
+      <a href="${directionsTo}" target="_blank" rel="noopener noreferrer">Get directions</a>`)
     .openPopup();
 
-  // Scroll-zoom only after the user clicks the map (so page scrolling isn't hijacked)
-  map.on('click', () => map.scrollWheelZoom.enable());
+  // Leaflet needed the real size of its box
+  const refresh = () => map.invalidateSize();
+  window.addEventListener('load', refresh);
+  window.addEventListener('resize', debounce(refresh, 200));
+  setTimeout(refresh, 300);
+
+  //Buttons (the locate button and status text already exist in contact.html)
+  const locateBtn = document.getElementById('locate-btn');
+  const status = document.getElementById('map-status');
+  const setStatus = (msg) => { if (status) status.textContent = msg; };
+
+  let extras = [];                       // pin, user marker and route line, so they can be cleared
+  const clearExtras = () => { extras.forEach((layer) => layer.remove()); extras = []; };
+
+  // Extra buttons are created here so no HTML change is needed
+  let directionsLink = null;
+  if (locateBtn) {
+    const actions = locateBtn.parentElement;
+    actions.classList.add('map-actions');
+
+    const resetBtn = document.createElement('button');
+    resetBtn.type = 'button';
+    resetBtn.className = 'btn alt';
+    resetBtn.textContent = 'Reset map';
+
+    directionsLink = document.createElement('a');
+    directionsLink.className = 'btn alt';
+    directionsLink.textContent = 'Get directions';
+    directionsLink.href = directionsTo;
+    directionsLink.target = '_blank';
+    directionsLink.rel = 'noopener noreferrer';
+
+    actions.append(' ', resetBtn, ' ', directionsLink);
+
+    resetBtn.addEventListener('click', () => {
+      clearExtras();
+      directionsLink.href = directionsTo;
+      map.setView(studio, zoom);
+      map.scrollWheelZoom.disable();
+      setStatus('Map reset. Click anywhere on the map to measure the distance to the studio.');
+    });
+  }
+
+  // Click the map: drop a pin and show the straight-line distance to the studio
+  map.on('click', (e) => {
+    map.scrollWheelZoom.enable();        // scroll-zoom only after the user clicks (page scrolling is not hijacked)
+    const km = map.distance(studio, e.latlng) / 1000;
+    const inside = km <= serviceRadiusKm;
+
+    clearExtras();
+    const pin = L.circleMarker(e.latlng, { radius: 8, color: '#c9b8ff', weight: 2, fillColor: '#7011b4', fillOpacity: 0.9 })
+      .addTo(map)
+      .bindPopup(`<strong>${km.toFixed(1)} km</strong> from the studio (straight line)<br>${inside ? 'Inside our service area.' : 'Outside our usual service area. Contact us for travel options.'}`)
+      .openPopup();
+    const line = L.polyline([studio, [e.latlng.lat, e.latlng.lng]], { color: '#c9b8ff', weight: 3, dashArray: '6 8' }).addTo(map);
+    extras = [pin, line];
+    setStatus(`That spot is about ${km.toFixed(1)} km from the studio. ${inside ? 'It is inside our service area.' : 'It is outside our usual service area.'}`);
+  });
   map.on('mouseout', () => map.scrollWheelZoom.disable());
 
-  // "Find distance from me" - location-based feature
-  const btn = document.getElementById('locate-btn');
-  const status = document.getElementById('map-status');
-  if (!btn) return;
+  // "How far am I from the studio?"  location based feature
+  if (!locateBtn) return;
 
-  btn.addEventListener('click', () => {
-    if (!navigator.geolocation) { status.textContent = 'Your browser does not support location.'; return; }
-    status.textContent = 'Finding your location...';
+  locateBtn.addEventListener('click', () => {
+    if (!navigator.geolocation) { setStatus('Your browser does not support location.'); return; }
+    setStatus('Finding your location...');
+    locateBtn.disabled = true;
 
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
-        const km = map.distance([lat, lng], [coords.latitude, coords.longitude]) / 1000;
-        L.marker([coords.latitude, coords.longitude]).addTo(map).bindPopup('You are here').openPopup();
-        map.fitBounds([[lat, lng], [coords.latitude, coords.longitude]], { padding: [40, 40] });
-        status.textContent = `You are about ${km.toFixed(1)} km from the studio.`;
+        locateBtn.disabled = false;
+        const me = [coords.latitude, coords.longitude];
+        const km = map.distance(studio, me) / 1000;
+
+        clearExtras();
+        const marker = L.marker(me, { title: 'Your location' }).addTo(map).bindPopup('You are here').openPopup();
+        const line = L.polyline([studio, me], { color: '#c9b8ff', weight: 3, dashArray: '6 8' }).addTo(map);
+        extras = [marker, line];
+
+        map.fitBounds([studio, me], { padding: [40, 40] });
+        if (directionsLink) directionsLink.href = `${directionsTo}&origin=${coords.latitude},${coords.longitude}`;
+        setStatus(`You are about ${km.toFixed(1)} km from the studio (straight line). Use "Get directions" for the road route.`);
       },
-      () => { status.textContent = 'We could not get your location. Please allow location access and try again.'; },
-      { timeout: 10000 }
+      (err) => {
+        locateBtn.disabled = false;
+        setStatus(err.code === 1
+          ? 'Location access was blocked. Allow location for this site in your browser and try again.'
+          : 'We could not get your location. Please try again.');
+      },
+      { timeout: 10000, enableHighAccuracy: true }
     );
   });
 }
@@ -626,7 +715,22 @@ function setupValidation(form, rules) {
   };
 }
 
-  // 9. CONTACT FORM -> compiled email the user can send
+
+  // 8b. SEND TO EMAIL (Web3Forms) used by both forms
+ //  Posts the fields to Web3Forms, which emails them to the owner.
+  // Throws an error if the message could not be delivered.
+async function sendToEmail(fields) {
+  const formData = new FormData();
+  formData.append('access_key', CONFIG.web3formsKey);
+  Object.entries(fields).forEach(([key, value]) => formData.append(key, value));
+
+  const res = await fetch(CONFIG.formEndpoint, { method: 'POST', body: formData });
+  const data = await res.json();
+  if (!res.ok || !data.success) throw new Error(data.message || `Server responded with ${res.status}`);
+  return data;
+}
+
+  // 9. CONTACT FORM -> sent straight to the owner's email  
 function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
@@ -641,7 +745,7 @@ function initContactForm() {
     consent: COMMON_RULES.consent
   });
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!validate()) return;
 
@@ -665,11 +769,38 @@ function initContactForm() {
       `Sent: ${new Date().toLocaleString('en-ZA')}`
     ].join('\r\n');
 
-    showEmailPreview(form, subject, body);
+    const btn = $('button[type="submit"]', form);
+    const btnText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    let sent = true;
+    try {
+      await sendToEmail({
+        subject,                          // email subject line
+        from_name: f.name.value.trim(),   // shown as the sender name
+        name: f.name.value.trim(),
+        email: f.email.value.trim(),      // Web3Forms uses this as the reply to address
+        phone: f.phone.value.trim(),
+        messageType: type,
+        service,
+        contactMethod: method,
+        message: f.message.value.trim()
+      });
+    } catch { sent = false; }
+
+    btn.disabled = false;
+    btn.textContent = btnText;
+
+    showEmailPreview(form, subject, body, sent);
+    if (sent) {
+      form.reset();
+      $$('.valid, .invalid', form).forEach((el) => el.classList.remove('valid', 'invalid'));
+    }
   });
 }
 
-function showEmailPreview(form, subject, body) {
+function showEmailPreview(form, subject, body, sent = false) {
   const to = CONFIG.recipientEmail;
   const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   const gmail = `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -684,8 +815,10 @@ function showEmailPreview(form, subject, body) {
   }
 
   box.innerHTML = `
-    <h2>Your email is ready</h2>
-    <p class="ok">Your message passed all checks. Your email app should open now. If it does not, use a button below to send it.</p>
+    <h2>${sent ? 'Message sent!' : 'We could not send it automatically'}</h2>
+    ${sent
+      ? '<p class="ok">Thank you! Your message has been delivered and we will get back to you soon.</p>'
+      : '<p class="bad">Something went wrong. Please use a button below to send it by email instead.</p>'}
     <dl>
       <dt>To</dt><dd>${escapeHTML(to)}</dd>
       <dt>Subject</dt><dd>${escapeHTML(subject)}</dd>
@@ -709,12 +842,12 @@ function showEmailPreview(form, subject, body) {
   });
 
   box.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  window.location.href = mailto;      // opens the visitor's email app straight away; the preview is the fallback
+  if (!sent) window.location.href = mailto;      // only open the email app when automatic sending failed
 }
 
 
-//10. ENQUIRY FORM -> validation + AJAX + cost/availability reply
-
+   //10. ENQUIRY FORM validation + email + cost/availability reply
+  
 function buildQuote({ service, pkg, date, hours }) {
   const base = CONFIG.pricing[service][pkg];
   const extra = hours * CONFIG.extraHourRate[service];
@@ -739,16 +872,6 @@ function nextAvailable(date, count = 3) {
   return found;
 }
 
-async function submitAsync(payload) {
-  const res = await fetch(CONFIG.ajaxEndpoint, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  });
-  if (!res.ok) throw new Error(`Server responded with ${res.status}`);
-  return res.json();
-}
-
 function initEnquiryForm() {
   const form = document.getElementById('enquiry-form');
   if (!form) return;
@@ -765,7 +888,7 @@ function initEnquiryForm() {
   const presetPackage = new URLSearchParams(location.search).get('package');
   if ([...f.package.options].some((o) => o.value === presetPackage)) f.package.value = presetPackage;
 
-  f.date.min = toISO(startOfToday());          // browser date-picker blocks past dates
+  f.date.min = toISO(startOfToday());          // browser date picker blocks past dates
 
   const validate = setupValidation(form, {
     name: COMMON_RULES.name,
@@ -800,23 +923,41 @@ function initEnquiryForm() {
       newsletter: f.newsletter.checked
     };
     const date = new Date(`${data.date}T00:00:00`);
+    const quote = buildQuote({ ...data, date });
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
     let sent = true;
-    try { await submitAsync(data); } catch { sent = false; }     // AJAX: page never reloads
+    try {
+      await sendToEmail({
+        subject: `Enquiry: ${data.service} (${data.pkg}) - ${data.name}`,
+        from_name: data.name,
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        service: data.service,
+        package: data.pkg,
+        preferredDate: data.date,
+        extraHours: data.hours,
+        estimatedTotal: money(quote.total),
+        contactMethod: data.contactMethod,
+        newsletter: data.newsletter ? 'Yes' : 'No',
+        message: data.message
+      });
+    } catch { sent = false; }     // AJAX: page never reloads
     submitBtn.disabled = false;
     submitBtn.textContent = 'Send Enquiry';
 
     const serviceLabel = f.service.selectedOptions[0]?.textContent.trim() || data.service;
-    const quote = buildQuote({ ...data, date });
     const avail = checkAvailability(date);
     const alternatives = avail.ok ? [] : nextAvailable(date);
 
     result.hidden = false;
     result.innerHTML = `
       <h2>Thanks, ${escapeHTML(data.name.split(' ')[0])}!</h2>
-      ${sent ? '' : '<p class="warn">We could not reach our server, so please also email us your enquiry. Your quote is still shown below.</p>'}
+      ${sent
+        ? '<p class="ok">Your enquiry has been sent to us.</p>'
+        : `<p class="warn">We could not send your enquiry automatically, so please also email it to ${escapeHTML(CONFIG.recipientEmail)}. Your quote is still shown below.</p>`}
       <h3>Availability</h3>
       ${avail.ok
         ? `<p class="ok">Good news: ${escapeHTML(longDate(date))} is available.</p>`
@@ -832,14 +973,16 @@ function initEnquiryForm() {
       <p class="note">This is an estimate. We will confirm the final price and contact you by ${escapeHTML(data.contactMethod.toLowerCase())} within a day.</p>`;
 
     result.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    form.reset();
-    $$('.valid, .invalid', form).forEach((el) => el.classList.remove('valid', 'invalid'));
+    if (sent) {                    // keep the form filled in if sending failed, so nothing has to be retyped
+      form.reset();
+      $$('.valid, .invalid', form).forEach((el) => el.classList.remove('valid', 'invalid'));
+    }
   });
 }
 
 
    //10b. LIVE CHARACTER COUNTER on every textarea with maxlength
-  
+ 
 function initCharCounters() {
   $$('textarea[maxlength]').forEach((area) => {
     const counter = document.createElement('small');
@@ -853,7 +996,9 @@ function initCharCounters() {
   });
 }
 
+
    //11. START EVERYTHING
+  
 document.addEventListener('DOMContentLoaded', () => {
   // Build dynamic content first so later modules (reveal, lightbox) see it
   initServicesList();
